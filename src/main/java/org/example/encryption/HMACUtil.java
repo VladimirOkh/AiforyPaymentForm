@@ -1,10 +1,9 @@
-package org.example;
+package org.example.encryption;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
 
 public class HMACUtil {
     public static String signData(String key, String msg) throws NoSuchAlgorithmException, InvalidKeyException {
