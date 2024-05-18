@@ -4,12 +4,14 @@ import com.squareup.okhttp.*;
 import org.example.encryption.HMACUtil;
 import org.example.service.CurrentTime;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
+@PropertySource("classpath:application.properties")
 @Component
 public class GenerateForm {
     @Value("${API-KEY}")
@@ -56,9 +58,6 @@ public class GenerateForm {
             ;
 
     public void makeCon() throws NoSuchAlgorithmException, InvalidKeyException, IOException {
-        System.out.println(PRIVATE_KEY);
-        System.out.println(PUBLIC_KEY);
-        System.out.println(USERAGENT);
 
         OkHttpClient client = new OkHttpClient();
         MediaType mediaType = MediaType.parse("application/json");

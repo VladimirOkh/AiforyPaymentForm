@@ -14,8 +14,19 @@ import java.security.NoSuchAlgorithmException;
 
 @Component
 public class Runner implements CommandLineRunner {
-    @Autowired
+
     GenerateForm generateForm;
+    GetMethods getMethods;
+    GetRecipientTypeID getRecipientTypeID;
+    GetCurrencies getCurrencies;
+
+    @Autowired
+    public Runner(GenerateForm generateForm, GetMethods getMethods, GetRecipientTypeID getRecipientTypeID, GetCurrencies getCurrencies) {
+        this.generateForm = generateForm;
+        this.getMethods = getMethods;
+        this.getRecipientTypeID = getRecipientTypeID;
+        this.getCurrencies = getCurrencies;
+    }
 
     public void run(String[] args) throws IOException, NoSuchAlgorithmException, InvalidKeyException {
 
@@ -31,22 +42,23 @@ public class Runner implements CommandLineRunner {
                         2 - Вывести методы
                         3 - Вывести recipientTypeIDs
                         4 - Вывести валюты""");
+
         String method = bufferedReader.readLine();
+
         int methodID = Integer.parseInt(method);
 
         switch (methodID) {
             case 1:
-                GenerateForm generateForm = new GenerateForm();
                 generateForm.makeCon();
                 break;
             case 2:
-                GetMethods.makeCon();
+                getMethods.makeCon();
                 break;
             case 3:
-                GetRecipientTypeID.makeCon();
+                getRecipientTypeID.makeCon();
                 break;
             case 4:
-                GetCurrencies.makeCon();
+                getCurrencies.makeCon();
                 break;
         }
     }
